@@ -1,0 +1,36 @@
+{
+	"name":"kappa/gravatar-helper",
+	"type":"library",
+	"description":"Simple system for getting avatars from service gravatar.com",
+	"keywords":["framework", "Nette", "Kappa", "Gravatar", "avatar", "helper"],
+	"homepage":"https://github.com/Kappa-org/Gravatar-Helper",
+	"license":"",
+
+	"authors":[
+		{
+			"name":"Ondřej Záruba",
+			"homepage":"http://zaruba-ondrej.cz/"
+		}
+	],
+
+	"support":{
+		"email":"zarubaondra@gmail.com",
+		"issues":"https://github.com/Kappa-org/Gravatar-Helper/issues"
+	},
+
+	"require":{
+		"php":">= 5.4.0",
+		"nette/nette":"dev-master",
+		"kappa/framework":"dev-master"
+	},
+
+	"require-dev":{
+		"nette/tester":"dev-master"
+	},
+
+	"autoload":{
+		"psr-0":{
+			"Kappa":"./"
+		}
+	}
+}
