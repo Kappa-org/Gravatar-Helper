@@ -24,7 +24,7 @@ Simple system for getting avatars from service gravatar.com
 			helpers:
 				gravatar: @Gravatar::gravatar
 	services:
-		Gravatar: Kappa\Templating\Helpers\GravatarHeler(defualt ing is not required)
+		Gravatar: Kappa\Templating\Helpers\GravatarHelper(gravatar.com link - not required, default image - not required)
 ```
 
 **3. Step - Clean temp directory!**
