@@ -11,6 +11,7 @@
 namespace Kappa\Templating\Helpers;
 
 use Kappa\FileNotFoundException;
+use Kappa\InvalidArgumentException;
 use Kappa\UrlNotFoundException;
 use Kappa\Utils\Validators;
 use Nette\Object;
@@ -30,16 +31,21 @@ class GravatarHelper extends Object
 	private $emailHash;
 
 	/**
-	 * @param null $gravatarUrl
+	 * @param null|string $gravatarUrl
 	 * @param null $gravatarDefault
+	 * @throws \Kappa\InvalidArgumentException
 	 * @throws \Kappa\UrlNotFoundException
 	 * @throws \Kappa\FileNotFoundException
 	 */
 	public function __construct($gravatarUrl = null, $gravatarDefault = null)
 	{
+		if($gravatarDefault && !is_string($gravatarDefault))
+			throw new InvalidArgumentException("Class " . __CLASS__ . " requires string as second parameter");
 		if ($gravatarDefault !== null && !file_exists($gravatarDefault))
 			throw new FileNotFoundException(__CLASS__, $gravatarDefault);
 		if ($this->gravatarUrl != $gravatarUrl && $gravatarUrl) {
+			if(!is_string($gravatarUrl))
+				throw new InvalidArgumentException("Class " . __CLASS__ . " requires string or null as first parameter");
 			$this->gravatarUrl = $gravatarUrl;
 		}
 		if (!Validators::isConnected($this->gravatarUrl))
