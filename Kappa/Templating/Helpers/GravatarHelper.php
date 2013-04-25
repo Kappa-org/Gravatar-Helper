@@ -10,6 +10,9 @@
 
 namespace Kappa\Templating\Helpers;
 
+use Kappa\FileNotFoundException;
+use Kappa\UrlNotFoundException;
+use Kappa\Utils\Validators;
 use Nette\Object;
 
 class GravatarHelper extends Object
@@ -27,12 +30,15 @@ class GravatarHelper extends Object
 
 	/**
 	 * @param null $gravatarDefault
+	 * @throws \Kappa\UrlNotFoundException
 	 * @throws \Kappa\FileNotFoundException
 	 */
 	public function __construct($gravatarDefault = null)
 	{
 		if ($gravatarDefault !== null && !file_exists($gravatarDefault))
-			throw new  \Kappa\FileNotFoundException(__CLASS__, $gravatarDefault);
+			throw new FileNotFoundException(__CLASS__, $gravatarDefault);
+		if(!Validators::isConnected(self::GRAVATAR_URL))
+			throw new UrlNotFoundException(__METHOD__, self::GRAVATAR_URL);
 		$this->gravatarDefault = urlencode($gravatarDefault);
 	}
 
