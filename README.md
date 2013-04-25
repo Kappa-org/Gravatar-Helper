@@ -1,4 +1,4 @@
-#Kappa:Gravatart helper
+#Kappa:Gravatart helper [![Build Status](https://travis-ci.org/Kappa-org/Gravatar-Helper.png?branch=master)](https://travis-ci.org/Kappa-org/Gravatar-Helper)
 
 Simple system for getting avatars from service gravatar.com
 
@@ -44,6 +44,6 @@ class HomepagePresenter extends \Kappa\Application\UI\Presenter
 ```
 ```html
 <!-- Layout -->
-<img src={$email|gravatar:50>
+<img src={$email|gravatar:50}>
 ```
 First parameter is image size
