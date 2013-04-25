@@ -41,7 +41,7 @@ class GravatarHelperTest extends Tests\TestCase
 
 	public function testGravatar()
 	{
-		Assert::same('http://www.gravatar.com/avatar/c5c5087851a505c0c7742b9af0b6289b?d=&s=50', $this->gravatarHelper->gravatar('info@example.com', 50));
+		Assert::same('http://www.gravatar.com/avatar/cb3045d1eb66dda5eae9ae2f96edeee9?d=&s=50', $this->gravatarHelper->gravatar("info@example.com", 50));
 	}
 }
 
