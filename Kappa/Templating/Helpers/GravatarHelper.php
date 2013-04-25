@@ -17,7 +17,8 @@ use Nette\Object;
 
 class GravatarHelper extends Object
 {
-	const GRAVATAR_URL = "http://www.gravatar.com/avatar/";
+	/** @var string */
+	private $gravatarUrl = "http://www.gravatar.com/avatar/";
 
 	/** @var string */
 	private $gravatarDefault;
@@ -29,16 +30,20 @@ class GravatarHelper extends Object
 	private $emailHash;
 
 	/**
+	 * @param null $gravatarUrl
 	 * @param null $gravatarDefault
 	 * @throws \Kappa\UrlNotFoundException
 	 * @throws \Kappa\FileNotFoundException
 	 */
-	public function __construct($gravatarDefault = null)
+	public function __construct($gravatarUrl = null, $gravatarDefault = null)
 	{
 		if ($gravatarDefault !== null && !file_exists($gravatarDefault))
 			throw new FileNotFoundException(__CLASS__, $gravatarDefault);
-		if(!Validators::isConnected(self::GRAVATAR_URL))
-			throw new UrlNotFoundException(__METHOD__, self::GRAVATAR_URL);
+		if ($this->gravatarUrl != $gravatarUrl && $gravatarUrl) {
+			$this->gravatarUrl = $gravatarUrl;
+		}
+		if (!Validators::isConnected($this->gravatarUrl))
+			throw new UrlNotFoundException(__METHOD__, $this->gravatarUrl);
 		$this->gravatarDefault = urlencode($gravatarDefault);
 	}
 
@@ -71,7 +76,7 @@ class GravatarHelper extends Object
 	 */
 	private function createUrl()
 	{
-		$url = self::GRAVATAR_URL;
+		$url = $this->gravatarUrl;
 		$url .= $this->emailHash;
 		$url .= '?d=';
 		$url .= $this->gravatarDefault;
