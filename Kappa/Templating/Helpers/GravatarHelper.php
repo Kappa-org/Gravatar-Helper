@@ -10,9 +10,9 @@
 
 namespace Kappa\Templating\Helpers;
 
-use Nette;
+use Nette\Object;
 
-class GravatarHelper extends Nette\Object
+class GravatarHelper extends Object
 {
 	const GRAVATAR_URL = "http://www.gravatar.com/avatar/";
 
@@ -31,7 +31,7 @@ class GravatarHelper extends Nette\Object
 	 */
 	public function __construct($gravatarDefault = null)
 	{
-		if($gravatarDefault !== null && !file_exists($gravatarDefault))
+		if ($gravatarDefault !== null && !file_exists($gravatarDefault))
 			throw new  \Kappa\FileNotFoundException(__CLASS__, $gravatarDefault);
 		$this->gravatarDefault = urlencode($gravatarDefault);
 	}
