@@ -20,7 +20,7 @@
 		"nette/nette": "2.1.*",
 		"kappa/framework": "dev-master#bec285a",
 		"flame/modules": "1.0.*",
-		"thomaswelton/gravatarlib": "@dev"
+		"thomaswelton/gravatarlib": "0.1.*"
 	},
 	"require-dev": {
 		"kappa/tester": "1.1.*"
