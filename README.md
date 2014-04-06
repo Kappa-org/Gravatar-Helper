@@ -1,49 +1,43 @@
-#Kappa:Gravatart helper [![Build Status](https://travis-ci.org/Kappa-org/Gravatar-Helper.png?branch=master)](https://travis-ci.org/Kappa-org/Gravatar-Helper)
+# Kappa\GravataHelper [![Build Status](https://travis-ci.org/Kappa-org/Gravatar-Helper.svg?branch=master)](https://travis-ci.org/Kappa-org/Gravatar-Helper)
 
-Simple system for getting avatars from service gravatar.com
+Simple helper for getting avatars from service gravatar.com
 
-###Requirements:
-- PHP 5.3.*
-- [Nette framework](http://nette.org/) 2.0.*
-- [Kappa:Framework](https://github.com/Kappa-org/Framework)
+## Requirements:
 
-###Install
+* PHP 5.3.3 or higher
+* [Nette framework](http://nette.org/) 2.1.*
+* [Flame\Modules](https://github.com/flame-org/modules) 1.0.*
+* [thomaswelton/gravatarlib](https://github.com/thomaswelton/gravatarlib/) 0.1.*
 
-1. Step - Add this package into your project
-```json
-	"require":{
-		"kappa/gravatar-helper" : "dev-master"
-	}
+## Installation
+
+The best way to install Kappa\Utils is using Composer:
+```bash
+$ composer require kappa/gravatar-helper:@dev
 ```
 
-2. Step - Registre this package in config
+and register extension:
+
 ```neon
-	nette:
-		template:
-			helperLoaders: \Kappa\Templating\Helpers
-			helpers:
-				gravatar: @Gravatar::gravatar
-	services:
-		Gravatar: Kappa\Templating\Helpers\GravatarHelper(gravatar.com link - not required, default image - not required)
+extensions:
+	- Flame\Modules\DI\ModulesExtension
+	gravatarHelper: Kappa\GravatarHelper\DI\GravatarHelperExtension
 ```
 
-**3. Step - Clean temp directory!**
+## Usages
 
-Complete! :)
+You can set helper name and default image in config:
 
-###Work with Thumbnails helper
-```php
-// Presenter
-class HomepagePresenter extends \Kappa\Application\UI\Presenter
-{
-	public function renderDefault()
-	{
-		$this->template->email = "email@exampl.ecom";
-	}
-}
 ```
-```html
-<!-- Layout -->
-<img src={$email|gravatar:50}>
+gravatarHelper:
+	name: myName
+	default: http://example.com/defaultImg.png
 ```
-First parameter is image size
+
+Default image is used if email has not avatar and helper name is used in template
+```latte
+<img src="{$user->getEmail()|myName:30|noescape}"
+```
+
+*Second parametr is avatar display size*
+**You must use ```noescape``` helper when you can use default image without ```noescape``` default image do not work!**

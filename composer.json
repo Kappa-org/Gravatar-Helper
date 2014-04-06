@@ -1,7 +1,7 @@
 {
 	"name": "kappa/gravatar-helper",
 	"type": "library",
-	"description": "Simple system for getting avatars from service gravatar.com",
+	"description": "Simple helper for getting avatars from service gravatar.com",
 	"keywords": ["framework", "Nette", "Kappa", "Gravatar", "avatar", "helper"],
 	"homepage": "https://github.com/Kappa-org/Gravatar-Helper",
 	"license": "",
