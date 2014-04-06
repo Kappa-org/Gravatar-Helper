@@ -18,7 +18,8 @@
 	"require": {
 		"php": ">= 5.3.3",
 		"nette/nette": "2.1.*",
-		"kappa/framework": "dev-master#bec285a"
+		"kappa/framework": "dev-master#bec285a",
+		"flame/modules": "1.0.*"
 	},
 	"require-dev": {
 		"kappa/tester": "1.1.*"
