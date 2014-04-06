@@ -1,36 +1,31 @@
 {
-	"name":"kappa/gravatar-helper",
-	"type":"library",
-	"description":"Simple system for getting avatars from service gravatar.com",
-	"keywords":["framework", "Nette", "Kappa", "Gravatar", "avatar", "helper"],
-	"homepage":"https://github.com/Kappa-org/Gravatar-Helper",
-	"license":"",
-
-	"authors":[
+	"name": "kappa/gravatar-helper",
+	"type": "library",
+	"description": "Simple system for getting avatars from service gravatar.com",
+	"keywords": ["framework", "Nette", "Kappa", "Gravatar", "avatar", "helper"],
+	"homepage": "https://github.com/Kappa-org/Gravatar-Helper",
+	"license": "",
+	"authors": [
 		{
-			"name":"Ondřej Záruba",
-			"homepage":"http://zaruba-ondrej.cz/"
+			"name": "Ondřej Záruba",
+			"homepage": "http://zaruba-ondrej.cz/"
 		}
 	],
-
-	"support":{
-		"email":"zarubaondra@gmail.com",
-		"issues":"https://github.com/Kappa-org/Gravatar-Helper/issues"
+	"support": {
+		"email": "zarubaondra@gmail.com",
+		"issues": "https://github.com/Kappa-org/Gravatar-Helper/issues"
 	},
-
-	"require":{
-		"php":">= 5.3.3",
+	"require": {
+		"php": ">= 5.3.3",
 		"nette/nette": "2.1.*",
-		"kappa/framework":"dev-master#bec285a"
+		"kappa/framework": "dev-master#bec285a"
 	},
-
-	"require-dev":{
-		"kappa/tester":"1.1.*"
+	"require-dev": {
+		"kappa/tester": "1.1.*"
 	},
-
-	"autoload":{
-		"psr-0":{
-			"Kappa":"src/"
+	"autoload": {
+		"psr-0": {
+			"Kappa": "src/"
 		}
 	}
 }
