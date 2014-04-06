@@ -19,13 +19,13 @@
 	},
 
 	"require":{
-		"php":">= 5.4.0",
-		"nette/nette":"dev-master",
-		"kappa/framework":"dev-master"
+		"php":">= 5.3.3",
+		"nette/nette": "2.1.*",
+		"kappa/framework":"dev-master#bec285a"
 	},
 
 	"require-dev":{
-		"nette/tester":"dev-master"
+		"kappa/tester":"1.1.*"
 	},
 
 	"autoload":{
