@@ -28,16 +28,17 @@ extensions:
 
 You can set helper name and default image in config:
 
-```
+```yaml
 gravatarHelper:
 	name: myName
 	default: http://example.com/defaultImg.png
 ```
 
 Default image is used if email has not avatar and helper name is used in template
-```latte
-<img src="{$user->getEmail()|myName:30|noescape}"
+```html
+<img src="{$user->getEmail()|myName:30|noescape}">
 ```
 
 *Second parametr is avatar display size*
+
 **You must use ```noescape``` helper when you can use default image without ```noescape``` default image do not work!**
