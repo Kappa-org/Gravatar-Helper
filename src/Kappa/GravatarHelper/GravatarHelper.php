@@ -8,7 +8,7 @@
  * @package Kappa
  */
 
-namespace Kappa\Templating\Helpers;
+namespace Kappa\GravatarHelper;
 
 use Kappa\FileNotFoundException;
 use Kappa\InvalidArgumentException;
