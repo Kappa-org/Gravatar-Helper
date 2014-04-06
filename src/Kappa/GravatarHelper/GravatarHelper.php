@@ -24,10 +24,13 @@ class GravatarHelper extends Object
 
 	/**
 	 * @param string $url
+	 * @return $this
 	 */
 	public function setDefaultImage($url)
 	{
 		$this->defaultImage = $url;
+
+		return $this;
 	}
 
 	/**
