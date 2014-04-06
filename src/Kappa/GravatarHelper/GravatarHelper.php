@@ -10,8 +10,8 @@
 
 namespace Kappa\GravatarHelper;
 
-use emberlabs\GravatarLib\Gravatar;
 use Nette\Object;
+use thomaswelton\GravatarLib\Gravatar;
 
 /**
  * Class GravatarHelper
