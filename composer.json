@@ -15,10 +15,11 @@
 		"email": "zarubaondra@gmail.com",
 		"issues": "https://github.com/Kappa-org/Gravatar-Helper/issues"
 	},
+	"minimum-stability": "beta",
 	"require": {
 		"php": ">= 5.3.3",
-		"nette/nette": "2.1.*",
-		"flame/modules": "1.0.*",
+		"nette/di": "~2.2",
+		"flame/modules": "dev-nette-2.2-beta1",
 		"thomaswelton/gravatarlib": "0.1.*"
 	},
 	"require-dev": {
@@ -28,5 +29,11 @@
 		"psr-0": {
 			"Kappa": "src/"
 		}
-	}
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "git@github.com:Budry/Modules.git"
+		}
+	]
 }
