@@ -18,3 +18,12 @@ class FileNotFoundException extends \LogicException
 {
 
 }
+
+/**
+ * Class UrlNotFoundException
+ * @package Kappa\GravatarHelper
+ */
+class UrlNotFoundException extends \LogicException
+{
+
+}
