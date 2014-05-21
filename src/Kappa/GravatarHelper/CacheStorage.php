@@ -33,22 +33,24 @@ class CacheStorage extends Object
 	 */
 	public function __construct($path, $publicDir)
 	{
-		if (!is_dir($path)) {
-			throw new DirectoryNotFoundException("Directory '{$path}' has not been found");
-		}
-		if (!is_dir($publicDir)) {
-			throw new DirectoryNotFoundException("Directory '{$publicDir}' has not been found");
-		}
-		$this->tempDirectory = realpath($path);
-		$this->publicDir = realpath($publicDir);
+		$this->tempDirectory = $path;
+		$this->publicDir = $publicDir;
 	}
 
 	/**
 	 * @param string $url
-	 * @return File
+	 * @return string
+	 * @throws DirectoryNotFoundException
 	 */
 	public function getAvatarCache($url)
 	{
+		if (!is_dir($this->tempDirectory)) {
+			throw new DirectoryNotFoundException("Cache directory '{$this->tempDirectory}' has not been found");
+		}
+		if (!is_dir($this->publicDir)) {
+			throw new DirectoryNotFoundException("Public directory '{$this->publicDir}' has not been found");
+		}
+
 		return $this->invalidateAvatarCache($url)->getInfo()->getRelativePath($this->publicDir);
 	}
 
