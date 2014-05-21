@@ -17,7 +17,8 @@
 	},
 	"require": {
 		"php": ">= 5.3.3",
-		"nette/nette": "~2.1"
+		"nette/nette": "~2.1",
+		"kappa/utils": "~1.0"
 	},
 	"require-dev": {
 		"kappa/tester": "1.1.*"
