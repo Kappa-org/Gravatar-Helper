@@ -1,7 +1,7 @@
 {
-	"name": "kappa/gravatar-helper",
+	"name": "kappa/gravatar",
 	"type": "library",
-	"description": "Simple helper for getting avatars from service gravatar.com",
+	"description": "Simple class for better getting avatars from service gravatar.com",
 	"keywords": ["framework", "Nette", "Kappa", "Gravatar", "avatar", "helper"],
 	"homepage": "https://github.com/Kappa-org/Gravatar-Helper",
 	"license": ["BSD-3-Clause"],
@@ -29,10 +29,10 @@
 			"Kappa": "src/"
 		},
 		"classmap": [
-			"src/Kappa/GravatarHelper/exceptions.php"
+			"src/Kappa/Gravatar/exceptions.php"
 		],
 		"files": [
-			"src/Kappa/GravatarHelper/compatibility.php"
+			"src/Kappa/Gravatar/compatibility.php"
 		]
 	}
 }

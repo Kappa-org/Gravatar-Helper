@@ -1,6 +1,6 @@
 <?php
 /**
- * GravatarHelper.php
+ * Gravatar.php
  *
  * @author Ondřej Záruba <zarubaondra@gmail.com>
  * @date 15.2.13
@@ -8,14 +8,14 @@
  * @package Kappa
  */
 
-namespace Kappa\GravatarHelper;
+namespace Kappa\Gravatar;
 
 use Kappa\Utils\Validators;
 use Nette\Object;
 
 /**
  * Class Gravatar
- * @package Kappa\GravatarHelper
+ * @package Kappa\Gravatar
  */
 class Gravatar extends Object
 {
@@ -41,7 +41,7 @@ class Gravatar extends Object
 	/** @var bool */
 	private $cache = true;
 
-	/** @var \Kappa\GravatarHelper\CacheStorage */
+	/** @var \Kappa\Gravatar\CacheStorage */
 	private $cacheStorage;
 
 	/**

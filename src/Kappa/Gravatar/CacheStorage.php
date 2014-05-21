@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Kappa\GravatarHelper package.
+ * This file is part of the Kappa\Gravatar package.
  *
  * (c) Ondřej Záruba <zarubaondra@gmail.com>
  *
@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Kappa\GravatarHelper;
+namespace Kappa\Gravatar;
 
 use Kappa\FileSystem\File;
 use Nette\Object;
@@ -16,7 +16,7 @@ use Nette\Utils\DateTime;
 
 /**
  * Class CacheStorage
- * @package Kappa\GravatarHelper
+ * @package Kappa\Gravatar
  */
 class CacheStorage extends Object
 {

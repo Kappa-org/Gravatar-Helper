@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Kappa\GravatarHelper package.
+ * This file is part of the Kappa\Gravatar package.
  *
  * (c) Ondřej Záruba <zarubaondra@gmail.com>
  *
@@ -8,11 +8,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Kappa\GravatarHelper;
+namespace Kappa\Gravatar;
 
 /**
  * Class FileNotFoundException
- * @package Kappa\GravatarHelper
+ * @package Kappa\Gravatar
  */
 class FileNotFoundException extends \LogicException
 {
@@ -21,7 +21,7 @@ class FileNotFoundException extends \LogicException
 
 /**
  * Class DirectoryNotFoundException
- * @package Kappa\GravatarHelper
+ * @package Kappa\Gravatar
  */
 class DirectoryNotFoundException extends \LogicException
 {
@@ -30,7 +30,7 @@ class DirectoryNotFoundException extends \LogicException
 
 /**
  * Class UrlNotFoundException
- * @package Kappa\GravatarHelper
+ * @package Kappa\Gravatar
  */
 class UrlNotFoundException extends \LogicException
 {
@@ -39,7 +39,7 @@ class UrlNotFoundException extends \LogicException
 
 /**
  * Class InvalidArgumentException
- * @package Kappa\GravatarHelper
+ * @package Kappa\Gravatar
  */
 class InvalidArgumentException extends \LogicException
 {

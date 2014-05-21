@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Kappa\GravatarHelper package.
+ * This file is part of the Kappa\Gravatar package.
  *
  * (c) Ondřej Záruba <zarubaondra@gmail.com>
  *
@@ -8,15 +8,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Kappa\GravatarHelper\DI;
+namespace Kappa\Gravatar\DI;
 
 use Nette\DI\CompilerExtension;
 
 /**
- * Class GravatarHelperExtension
- * @package Kappa\GravatarHelper\DI
+ * Class GravatarExtension
+ * @package Kappa\Gravatar\DI
  */
-class GravatarHelperExtension extends CompilerExtension
+class GravatarExtension extends CompilerExtension
 {
 	private $defaultConfig = array(
 		'wwwDir' => '%wwwDir%',
@@ -29,9 +29,9 @@ class GravatarHelperExtension extends CompilerExtension
 		$builder = $this->getContainerBuilder();
 
 		$builder->addDefinition($this->prefix('cacheStorage'))
-			->setClass('Kappa\GravatarHelper\CacheStorage', array($config['cacheDir'], $config['wwwDir']));
+			->setClass('Kappa\Gravatar\CacheStorage', array($config['cacheDir'], $config['wwwDir']));
 
 		$builder->addDefinition($this->prefix('gravatar'))
-			->setClass('Kappa\GravatarHelper\Gravatar', array($this->prefix('@cacheStorage')));
+			->setClass('Kappa\Gravatar\Gravatar', array($this->prefix('@cacheStorage')));
 	}
 }

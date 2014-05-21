@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Kappa\GravatarHelper package.
+ * This file is part of the Kappa\Gravatar package.
  *
  * (c) Ondřej Záruba <zarubaondra@gmail.com>
  *

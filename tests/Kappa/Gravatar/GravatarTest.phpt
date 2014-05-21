@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Kappa\GravatarHelper package.
+ * This file is part of the Kappa\Gravatar package.
  *
  * (c) Ondřej Záruba <zarubaondra@gmail.com>
  *
@@ -10,10 +10,10 @@
  * @testCase
  */
 
-namespace Kappa\GravatarHelper\Tests;
+namespace Kappa\Gravatar\Tests;
 
-use Kappa\GravatarHelper\CacheStorage;
-use Kappa\GravatarHelper\Gravatar;
+use Kappa\Gravatar\CacheStorage;
+use Kappa\Gravatar\Gravatar;
 use Kappa\Tester\TestCase;
 use Tester\Assert;
 use Tester\Helpers;
@@ -21,12 +21,12 @@ use Tester\Helpers;
 require_once __DIR__ . '/../bootstrap.php';
 
 /**
- * Class GravatarHelperTest
- * @package Kappa\GravatarHelper\Tests
+ * Class GravatarTest
+ * @package Kappa\Gravatar\Tests
  */
-class GravatarHelperTest extends TestCase
+class GravatarTest extends TestCase
 {
-	/** @var \Kappa\GravatarHelper\Gravatar */
+	/** @var \Kappa\Gravatar\Gravatar */
 	private $gravatar;
 
 	/** @var string */
@@ -51,10 +51,10 @@ class GravatarHelperTest extends TestCase
 		$self = $this;
 		Assert::throws(function () use ($self) {
 			$self->gravatar->setDefaultImage('http://no');
-		}, 'Kappa\GravatarHelper\UrlNotFoundException');
+		}, 'Kappa\Gravatar\UrlNotFoundException');
 		Assert::throws(function () use ($self) {
 			$self->gravatar->setDefaultImage('no_file');
-		}, 'Kappa\GravatarHelper\FileNotFoundException');
+		}, 'Kappa\Gravatar\FileNotFoundException');
 	}
 
 	public function testSize()
@@ -64,7 +64,7 @@ class GravatarHelperTest extends TestCase
 		$self = $this;
 		Assert::throws(function() use ($self) {
 			$self->gravatar->setSize('adsasd');
-		}, 'Kappa\GravatarHelper\InvalidArgumentException');
+		}, 'Kappa\Gravatar\InvalidArgumentException');
 	}
 
 	public function testForceDefault()
@@ -83,7 +83,7 @@ class GravatarHelperTest extends TestCase
 		$self = $this;
 		Assert::throws(function () use ($self) {
 			$self->gravatar->setRating('c');
-		}, 'Kappa\GravatarHelper\InvalidArgumentException');
+		}, 'Kappa\Gravatar\InvalidArgumentException');
 	}
 
 	public function testSecureRequest()
@@ -154,4 +154,4 @@ class GravatarHelperTest extends TestCase
 	}
 }
 
-\run(new GravatarHelperTest());
+\run(new GravatarTest());

@@ -1,6 +1,6 @@
 # Kappa\GravataHelper [![Build Status](https://travis-ci.org/Kappa-org/Gravatar-Helper.svg?branch=master)](https://travis-ci.org/Kappa-org/Gravatar-Helper)
 
-Simple helper for getting avatars from service gravatar.com
+Simple class for better getting avatars from service gravatar.com
 
 ## Requirements:
 
@@ -21,7 +21,7 @@ and register extension:
 ```neon
 extensions:
 	- Flame\Modules\DI\ModulesExtension
-	gravatarHelper: Kappa\GravatarHelper\DI\GravatarHelperExtension
+	Gravatar: Kappa\Gravatar\DI\GravatarExtension
 ```
 
 ## Usages
@@ -29,7 +29,7 @@ extensions:
 You can set helper name and default image in config:
 
 ```yaml
-gravatarHelper:
+Gravatar:
 	name: myName
 	default: http://example.com/defaultImg.png
 ```

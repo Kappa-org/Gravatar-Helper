@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Kappa\GravatarHelper package.
+ * This file is part of the Kappa\Gravatar package.
  *
  * (c) Ondřej Záruba <zarubaondra@gmail.com>
  *
@@ -10,9 +10,9 @@
  * @testCase
  */
 
-namespace Kappa\GravatarHelper\Tests;
+namespace Kappa\Gravatar\Tests;
 
-use Kappa\GravatarHelper\CacheStorage;
+use Kappa\Gravatar\CacheStorage;
 use Kappa\Tester\TestCase;
 use Tester\Assert;
 use Tester\Helpers;
@@ -21,11 +21,11 @@ require_once __DIR__ . '/../bootstrap.php';
 
 /**
  * Class CacheStorage
- * @package Kappa\GravatarHelper\Tests
+ * @package Kappa\Gravatar\Tests
  */
 class CacheStorageTest extends TestCase
 {
-	/** @var \Kappa\GravatarHelper\CacheStorage */
+	/** @var \Kappa\Gravatar\CacheStorage */
 	private $cacheStorage;
 	
 	/** @var string */

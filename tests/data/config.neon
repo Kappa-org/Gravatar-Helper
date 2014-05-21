@@ -2,4 +2,4 @@ parameters:
 	wwwDir: ./
 
 extensions:
-	gravatar: Kappa\GravatarHelper\DI\GravatarHelperExtension
+	gravatar: Kappa\Gravatar\DI\GravatarExtension

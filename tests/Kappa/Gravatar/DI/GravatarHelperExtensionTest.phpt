@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Kappa\GravatarHelper package.
+ * This file is part of the Kappa\Gravatar package.
  *
  * (c) Ondřej Záruba <zarubaondra@gmail.com>
  *
@@ -10,7 +10,7 @@
  * @testCase
  */
 
-namespace Kappa\GravatarHelper\Tests;
+namespace Kappa\Gravatar\Tests;
 
 use Kappa\Tester\TestCase;
 use Nette\DI\Container;
@@ -18,7 +18,7 @@ use Tester\Assert;
 
 require_once __DIR__ . '/../../bootstrap.php';
 
-class GravatarHelperExtensionTest extends TestCase
+class GravatarExtensionTest extends TestCase
 {
 	/** @var \Nette\DI\Container */
 	private $container;
@@ -34,14 +34,14 @@ class GravatarHelperExtensionTest extends TestCase
 	public function testGravatar()
 	{
 		$service = $this->container->getService('gravatar.gravatar');
-		Assert::type('Kappa\GravatarHelper\Gravatar', $service);
+		Assert::type('Kappa\Gravatar\Gravatar', $service);
 	}
 
 	public function testCacheStorage()
 	{
 		$service = $this->container->getService('gravatar.cacheStorage');
-		Assert::type('Kappa\GravatarHelper\CacheStorage', $service);
+		Assert::type('Kappa\Gravatar\CacheStorage', $service);
 	}
 }
 
-\run(new GravatarHelperExtensionTest(getContainer()));
+\run(new GravatarExtensionTest(getContainer()));
