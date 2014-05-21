@@ -210,12 +210,16 @@ class Gravatar extends Object
 
 	/**
 	 * @param string $email
+	 * @param int|float $size
 	 * @return string
 	 */
-	public function getAvatar($email)
+	public function getAvatar($email, $size = null)
 	{
 		$emailHash = md5(trim(strtolower($email)));
 		$url = $this->getUrl($emailHash);
+		if ($size) {
+			$this->setSize($size);
+		}
 
 		return ($this->cache) ? $this->cacheStorage->getAvatarCache($url) : $url;
 	}
