@@ -27,3 +27,12 @@ class UrlNotFoundException extends \LogicException
 {
 
 }
+
+/**
+ * Class InvalidArgumentException
+ * @package Kappa\GravatarHelper
+ */
+class InvalidArgumentException extends \LogicException
+{
+
+}
