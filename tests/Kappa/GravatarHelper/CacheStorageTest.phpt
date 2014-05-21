@@ -38,7 +38,7 @@ class CacheStorageTest extends TestCase
 			mkdir($tempDirectory);
 		}
 		$this->tempDirectory = realpath($tempDirectory);
-		$this->cacheStorage = new CacheStorage($tempDirectory);
+		$this->cacheStorage = new CacheStorage($tempDirectory, $tempDirectory);
 	}
 
 	public function testGetAvatarCache()
@@ -48,7 +48,7 @@ class CacheStorageTest extends TestCase
 		$urlHash = md5($url);
 		$cacheFile = $this->tempDirectory . DIRECTORY_SEPARATOR . $urlHash . '.png';
 		Assert::false(is_file($cacheFile));
-		Assert::type('Kappa\FileSystem\File', $this->cacheStorage->getAvatarCache($url));
+		Assert::same('/' . $urlHash . '.png', $this->cacheStorage->getAvatarCache($url));
 		Assert::true(is_file($cacheFile));
 	}
 
