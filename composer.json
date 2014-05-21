@@ -30,6 +30,9 @@
 		},
 		"classmap": [
 			"src/Kappa/GravatarHelper/exceptions.php"
+		],
+		"files": [
+			"src/Kappa/GravatarHelper/compatibility.php"
 		]
 	}
 }
