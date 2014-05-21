@@ -12,9 +12,11 @@
 
 namespace Kappa\GravatarHelper\Tests;
 
+use Kappa\GravatarHelper\CacheStorage;
 use Kappa\GravatarHelper\Gravatar;
 use Kappa\Tester\TestCase;
 use Tester\Assert;
+use Tester\Helpers;
 
 require_once __DIR__ . '/../bootstrap.php';
 
@@ -27,9 +29,16 @@ class GravatarHelperTest extends TestCase
 	/** @var \Kappa\GravatarHelper\Gravatar */
 	private $gravatar;
 
+	private $tempDirectory;
+
 	protected function setUp()
 	{
-		$this->gravatar = new Gravatar();
+		$this->tempDirectory = __DIR__ . '/../../data';
+		if (!is_dir($this->tempDirectory)) {
+			mkdir($this->tempDirectory);
+		}
+		$this->gravatar = new Gravatar(new CacheStorage($this->tempDirectory, $this->tempDirectory));
+		$this->gravatar->disableCache();
 	}
 
 	public function testDefaultImage()
@@ -85,12 +94,22 @@ class GravatarHelperTest extends TestCase
 		Assert::false($this->gravatar->getSecureRequest());
 	}
 
+	public function testCache()
+	{
+		Assert::false($this->gravatar->getCache());
+		Assert::type(get_class($this->gravatar), $this->gravatar->enableCache());
+		Assert::true($this->gravatar->getCache());
+		Assert::type(get_class($this->gravatar), $this->gravatar->disableCache());
+		Assert::false($this->gravatar->getCache());
+	}
+
 	public function testGetAvatar()
 	{
 		$url = 'http://www.gravatar.com/avatar/';
 		$url_sec = 'https://secure.gravatar.com/avatar/';
 		$email = 'test@test.com';
-		$gravatar = new Gravatar();
+		$gravatar = new Gravatar(new CacheStorage($this->tempDirectory, $this->tempDirectory));
+		$gravatar->disableCache();
 		Assert::same($url . md5($email), $gravatar->getAvatar($email));
 		$gravatar->enableSecureRequest();
 		Assert::same($url_sec . md5($email), $gravatar->getAvatar($email));
@@ -105,6 +124,33 @@ class GravatarHelperTest extends TestCase
 	{
 		Assert::same('http://www.gravatar.com/avatar/', Gravatar::URL);
 		Assert::same('https://secure.gravatar.com/avatar/', Gravatar::SECURE_URL);
+	}
+
+	public function testCacheStorage()
+	{
+		$temp = __DIR__ . '/../../data';
+		$email = 'test@test.com';
+		$url = 'http://www.gravatar.com/avatar/' . md5($email);
+		$expectedFileName = md5($url) . '.png';
+		$expectedFile = $temp . '/' . $expectedFileName;
+		$gravatar = new Gravatar(new CacheStorage($temp, $temp));
+
+		Assert::false(is_file($expectedFile));
+		$gravatar->disableCache();
+		Assert::false($gravatar->getCache());
+		Assert::same($url, $gravatar->getAvatar($email));;
+		Assert::false(is_file($expectedFile));
+
+		Assert::false(is_file($expectedFile));
+		$gravatar->enableCache();
+		Assert::true($gravatar->getCache());
+		Assert::same('/' . $expectedFileName, $gravatar->getAvatar($email));;
+		Assert::true(is_file($expectedFile));
+	}
+
+	protected function tearDown()
+	{
+		Helpers::purge($this->tempDirectory);
 	}
 }
 

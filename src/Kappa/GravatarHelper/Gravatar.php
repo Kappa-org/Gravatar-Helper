@@ -38,6 +38,20 @@ class Gravatar extends Object
 	/** @var bool */
 	private $secureRequest = false;
 
+	/** @var bool */
+	private $cache = true;
+
+	/** @var \Kappa\GravatarHelper\CacheStorage */
+	private $cacheStorage;
+
+	/**
+	 * @param CacheStorage $cacheStorage
+	 */
+	public function __construct(CacheStorage $cacheStorage)
+	{
+		$this->cacheStorage = $cacheStorage;
+	}
+
 	/**
 	 * @param string $path
 	 * @return $this
@@ -162,6 +176,28 @@ class Gravatar extends Object
 		return $this->secureRequest;
 	}
 
+	public function enableCache()
+	{
+		$this->cache = true;
+
+		return $this;
+	}
+
+	public function disableCache()
+	{
+		$this->cache = false;
+
+		return $this;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function getCache()
+	{
+		return $this->cache;
+	}
+
 	/**
 	 * @return $this
 	 */
@@ -181,7 +217,7 @@ class Gravatar extends Object
 		$emailHash = md5(trim(strtolower($email)));
 		$url = $this->getUrl($emailHash);
 
-		return $url;
+		return ($this->cache) ? $this->cacheStorage->getAvatarCache($url) : $url;
 	}
 
 	/**
