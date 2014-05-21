@@ -26,7 +26,7 @@ class GravatarHelperTest extends TestCase
 {
 	public function testGravatar()
 	{
-		
+
 	}
 }
 

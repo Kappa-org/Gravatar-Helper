@@ -13,10 +13,10 @@ namespace Kappa\GravatarHelper;
 use Nette\Object;
 
 /**
- * Class GravatarHelper
+ * Class Gravatar
  * @package Kappa\GravatarHelper
  */
-class GravatarHelper extends Object
+class Gravatar extends Object
 {
 	/** @var string */
 	private $defaultImage;
