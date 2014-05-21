@@ -33,16 +33,14 @@ class CacheStorage extends Object
 	 */
 	public function __construct($path, $publicDir)
 	{
-		$path = realpath($path);
-		$publicDir = realpath($publicDir);
-		if (!$path) {
+		if (!is_dir($path)) {
 			throw new DirectoryNotFoundException("Directory '{$path}' has not been found");
 		}
-		if (!$publicDir) {
+		if (!is_dir($publicDir)) {
 			throw new DirectoryNotFoundException("Directory '{$publicDir}' has not been found");
 		}
-		$this->tempDirectory = $path;
-		$this->publicDir = $publicDir;
+		$this->tempDirectory = realpath($path);
+		$this->publicDir = realpath($publicDir);
 	}
 
 	/**
