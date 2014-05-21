@@ -15,10 +15,9 @@
 		"email": "zarubaondra@gmail.com",
 		"issues": "https://github.com/Kappa-org/Gravatar-Helper/issues"
 	},
-	"minimum-stability": "beta",
 	"require": {
 		"php": ">= 5.3.3",
-		"nette/di": "~2.2",
+		"nette/nette": "~2.1",
 		"thomaswelton/gravatarlib": "0.1.*"
 	},
 	"require-dev": {
