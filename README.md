@@ -1,44 +1,46 @@
-# Kappa\GravataHelper [![Build Status](https://travis-ci.org/Kappa-org/Gravatar-Helper.svg?branch=master)](https://travis-ci.org/Kappa-org/Gravatar-Helper)
+# Kappa\Gravata [![Build Status](https://travis-ci.org/Kappa-org/Gravatar-Helper.svg?branch=master)](https://travis-ci.org/Kappa-org/Gravatar-Helper)
 
 Simple class for better getting avatars from service gravatar.com
 
 ## Requirements:
 
 * PHP 5.3.3 or higher
-* [Nette framework](http://nette.org/) 2.1.*
-* [Flame\Modules](https://github.com/flame-org/modules) 1.0.*
-* [thomaswelton/gravatarlib](https://github.com/thomaswelton/gravatarlib/) 0.1.*
+* [nette/nette](http://nette.org/) 2.1.* and 2.2.*
+* [kappa/filesystem](https://github.com/Kappa-org/FileSystem) 4.2.*
+* [kappa/utils](https://github.com/Kappa-org/Utils) 1.0.*
 
 ## Installation
 
 The best way to install Kappa\Utils is using Composer:
 ```bash
-$ composer require kappa/gravatar-helper:@dev
+$ composer require kappa/gravatar:@dev
 ```
 
 and register extension:
 
-```neon
+```yaml
 extensions:
-	- Flame\Modules\DI\ModulesExtension
-	Gravatar: Kappa\Gravatar\DI\GravatarExtension
+	gravatar: Kappa\Gravatar\DI\GravatarExtension
 ```
 
 ## Usages
 
-You can set helper name and default image in config:
+You can set cache directory for faster displaying avatars
 
 ```yaml
-Gravatar:
-	name: myName
-	default: http://example.com/defaultImg.png
+gravatar:
+	cacheDir: %wwwDir%/gravatar #default
 ```
 
-Default image is used if email has not avatar and helper name is used in template
+Into presenter or control where you can use this helper add filter (helper)
+
+```php
+$template->addFilter('gravatar', array($this->gravatar, 'getAvatar')) // for Nette 2.2
+$template->registerHelper('gravatar', array($this->gravatar, 'getAvatar')) // for Nette 2.1
+```
+
+Usages in template:
+
 ```html
-<img src="{$user->getEmail()|myName:30|noescape}">
+<img src="$user->getEmail()|gravatar:30">
 ```
-
-*Second parametr is avatar display size*
-
-**You must use ```noescape``` helper when you can use default image without ```noescape``` default image do not work!**
