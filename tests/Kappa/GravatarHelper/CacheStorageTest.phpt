@@ -33,7 +33,7 @@ class CacheStorageTest extends TestCase
 
 	protected function setUp()
 	{
-		$tempDirectory = __DIR__ . '/../../data/';
+		$tempDirectory = __DIR__ . '/../../data/cache';
 		if (!is_dir($tempDirectory)) {
 			mkdir($tempDirectory);
 		}

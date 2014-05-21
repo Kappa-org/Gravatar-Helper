@@ -29,11 +29,12 @@ class GravatarHelperTest extends TestCase
 	/** @var \Kappa\GravatarHelper\Gravatar */
 	private $gravatar;
 
+	/** @var string */
 	private $tempDirectory;
 
 	protected function setUp()
 	{
-		$this->tempDirectory = __DIR__ . '/../../data';
+		$this->tempDirectory = __DIR__ . '/../../data/cache';
 		if (!is_dir($this->tempDirectory)) {
 			mkdir($this->tempDirectory);
 		}
@@ -128,12 +129,11 @@ class GravatarHelperTest extends TestCase
 
 	public function testCacheStorage()
 	{
-		$temp = __DIR__ . '/../../data';
 		$email = 'test@test.com';
 		$url = 'http://www.gravatar.com/avatar/' . md5($email);
 		$expectedFileName = md5($url) . '.png';
-		$expectedFile = $temp . '/' . $expectedFileName;
-		$gravatar = new Gravatar(new CacheStorage($temp, $temp));
+		$expectedFile = $this->tempDirectory . '/' . $expectedFileName;
+		$gravatar = new Gravatar(new CacheStorage($this->tempDirectory, $this->tempDirectory));
 
 		Assert::false(is_file($expectedFile));
 		$gravatar->disableCache();
