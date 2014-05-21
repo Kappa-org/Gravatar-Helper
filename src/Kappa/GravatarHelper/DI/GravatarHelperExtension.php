@@ -10,14 +10,13 @@
 
 namespace Kappa\GravatarHelper\DI;
 
-use Flame\Modules\Providers\ITemplateHelpersProvider;
 use Nette\DI\CompilerExtension;
 
 /**
  * Class GravatarHelperExtension
  * @package Kappa\GravatarHelper\DI
  */
-class GravatarHelperExtension extends CompilerExtension implements ITemplateHelpersProvider
+class GravatarHelperExtension extends CompilerExtension
 {
 	public function loadConfiguration()
 	{
@@ -28,18 +27,5 @@ class GravatarHelperExtension extends CompilerExtension implements ITemplateHelp
 		$builder->addDefinition($this->prefix('gravatarHelper'))
 			->setClass('Kappa\GravatarHelper\GravatarHelper')
 			->addSetup('setDefaultImage', array($config['default']));
-	}
-
-	/**
-	 * Return list of helpers definitions or providers
-	 *
-	 * @return array
-	 */
-	public function getHelpersConfiguration()
-	{
-		$config = $this->getConfig(array('name' => 'gravatar'));
-		return array(
-			$config['name'] => array($this->prefix('@gravatarHelper'), 'process')
-		);
 	}
 }
