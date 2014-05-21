@@ -27,7 +27,7 @@ require_once __DIR__ . '/../bootstrap.php';
 class GravatarTest extends TestCase
 {
 	/** @var \Kappa\Gravatar\Gravatar */
-	private $gravatar;
+	public $gravatar;
 
 	/** @var string */
 	private $tempDirectory;
