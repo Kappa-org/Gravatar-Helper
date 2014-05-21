@@ -3,6 +3,3 @@ parameters:
 
 extensions:
 	gravatar: Kappa\GravatarHelper\DI\GravatarHelperExtension
-
-gravatar:
-	cacheDir: ./
