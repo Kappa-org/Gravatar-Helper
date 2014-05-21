@@ -18,14 +18,20 @@ use Nette\DI\CompilerExtension;
  */
 class GravatarHelperExtension extends CompilerExtension
 {
+	private $defaultConfig = array(
+		'wwwDir' => '%wwwDir%',
+		'cacheDir' => '%wwwDir%/gravatar_cache'
+	);
+
 	public function loadConfiguration()
 	{
-		$config = $this->getConfig(array(
-			'default' => 'mm'
-		));
+		$config = $this->getConfig($this->defaultConfig);
 		$builder = $this->getContainerBuilder();
-		$builder->addDefinition($this->prefix('gravatarHelper'))
-			->setClass('Kappa\GravatarHelper\GravatarHelper')
-			->addSetup('setDefaultImage', array($config['default']));
+
+		$builder->addDefinition($this->prefix('cacheStorage'))
+			->setClass('Kappa\GravatarHelper\CacheStorage', array($config['cacheDir'], $config['wwwDir']));
+
+		$builder->addDefinition($this->prefix('gravatar'))
+			->setClass('Kappa\GravatarHelper\Gravatar', array($this->prefix('@cacheStorage')));
 	}
 }
