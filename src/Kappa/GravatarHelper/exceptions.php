@@ -20,6 +20,15 @@ class FileNotFoundException extends \LogicException
 }
 
 /**
+ * Class DirectoryNotFoundException
+ * @package Kappa\GravatarHelper
+ */
+class DirectoryNotFoundException extends \LogicException
+{
+
+}
+
+/**
  * Class UrlNotFoundException
  * @package Kappa\GravatarHelper
  */
